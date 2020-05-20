@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public Animator anima;
 
 
-
     private void Start()
     {
         anima=GetComponent<Animator>();
@@ -19,6 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.anyKey)
         {
+            //This activates the animations for the player.
             anima.SetBool("isMoving", true);
             Movement();
         }
@@ -55,9 +55,18 @@ public class PlayerController : MonoBehaviour
         {
             transform.position -= transform.forward * Time.deltaTime * movementSpeed;
         }
+        //This commands can quit the game with esc, or pause, and also resume the game. 
         else if (Input.GetKey(KeyCode.Escape))
+        {  
+             Application.Quit();
+        }
+        else if(Input.GetKey(KeyCode.Space))
         {
-            Application.Quit();
+            Time.timeScale = 0;
+        }
+        else if (Input.GetKey(KeyCode.R))
+        {
+            Time.timeScale = 1;
         }
 
     }

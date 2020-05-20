@@ -26,6 +26,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        //All of this makes that the camera can't go beyond a certain limit, in the case of looking up or lookind down, or at least it's supposed to do.
         float horizontal = Input.GetAxis("Mouse X")*rotateSpeed;
         target.Rotate(0, -horizontal, 0);
 
