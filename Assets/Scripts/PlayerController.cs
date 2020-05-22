@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
    
     public Animator anima;
-
+    public float t=60;
+    public Text timerTxt;
 
     private void Start()
     {
@@ -56,7 +59,7 @@ public class PlayerController : MonoBehaviour
             transform.position -= transform.forward * Time.deltaTime * movementSpeed;
         }
         //This commands can quit the game with esc, or pause, and also resume the game. 
-        else if (Input.GetKey(KeyCode.Escape))
+        else if (Input.GetKey(KeyCode.Tab))
         {  
              Application.Quit();
         }
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.R))
         {
-            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
     }
