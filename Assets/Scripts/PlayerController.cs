@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
 {
    
     public Animator anima;
-    public float t=60;
     public Text timerTxt;
 
     private void Start()
@@ -65,10 +64,12 @@ public class PlayerController : MonoBehaviour
         }
         else if(Input.GetKey(KeyCode.Space))
         {
+            //This command stops the game, so it's a pause. 
             Time.timeScale = 0;
         }
-        else if (Input.GetKey(KeyCode.R))
+        else if (Input.GetKey(KeyCode.R)&& GameObject.Find("HPlayer").GetComponent<TimerController>().t <=0)
         {
+            //this instruction reload the scene at the same time with timercontroller restart, with the condition the value of t is 0. 
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
